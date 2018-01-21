@@ -2,8 +2,7 @@ package com.ternary.adverts;
 
 import com.google.common.collect.ImmutableList;
 import com.ternary.adverts.dao.Repository;
-import com.ternary.adverts.domain.Advert;
-import com.ternary.adverts.domain.State;
+import com.ternary.adverts.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,9 +26,9 @@ public class Controller {
     Advert getRestaurant(@RequestBody final State state) {
         final ImmutableList<Advert> adverts = ImmutableList.copyOf(repository.findAll());
         final ArrayList<Advert> filteredAdverts = new ArrayList<>();
-        filteredAdverts.addAll(adverts.stream().filter(advert -> advert.getAgeGroup() == state.getAgeGroup()).collect(Collectors.toList()));
-        filteredAdverts.addAll(adverts.stream().filter(advert -> advert.getEmotion() == state.getEmotion()).collect(Collectors.toList()));
-        filteredAdverts.addAll(adverts.stream().filter(advert -> advert.getGender() == state.getGender()).collect(Collectors.toList()));
+        filteredAdverts.addAll(adverts.stream().filter(advert -> advert.getAgeGroup() == state.getAgeGroup() || advert.getAgeGroup() == AgeGroup.ALL).collect(Collectors.toList()));
+        filteredAdverts.addAll(adverts.stream().filter(advert -> advert.getEmotion() == state.getEmotion() || advert.getEmotion() == Emotion.ALL).collect(Collectors.toList()));
+        filteredAdverts.addAll(adverts.stream().filter(advert -> advert.getGender() == state.getGender() || advert.getGender() == Gender.ALL).collect(Collectors.toList()));
 
         final Map<Advert, Long> countMap = filteredAdverts.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
