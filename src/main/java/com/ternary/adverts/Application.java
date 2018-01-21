@@ -37,6 +37,7 @@ public class Application {
         repository.save(new Advert(4L, "H&M Advert", AgeGroup.YOUNGADULT, Emotion.HAPPY, Gender.FEMALE, "https://s-media-cache-ak0.pinimg.com/originals/d6/71/d8/d671d8bc50cbbc2686388a1bc15b715a.jpg", 0));
         repository.save(new Advert(5L, "Dog Food advert", AgeGroup.OLD, Emotion.ALL, Gender.FEMALE, "https://2.bp.blogspot.com/-6CRbAr-DulY/VEDZM2w4IYI/AAAAAAAAWMo/h2MBS4Tbwlo/s1600/funny-dog-weightloss-advert.jpg", 0));
         repository.save(new Advert(6L, "Old Spice Advert", AgeGroup.ADULT, Emotion.ALL, Gender.MALE, "https://i.pinimg.com/736x/1b/ed/a9/1beda91785bc9c2a77983271cbca062a--old-spice-funny-ads.jpg", 0));
+        repository.save(new Advert(7L, "Despicable Me Adver", AgeGroup.CHILDREN, Emotion.ALL, Gender.ALL, "https://i.pinimg.com/originals/da/00/dc/da00dc92b0c68f06f828e836697a1bbe.jpg", 0));
     }
 
     @Bean
