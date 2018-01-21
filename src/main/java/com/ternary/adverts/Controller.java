@@ -34,6 +34,11 @@ public class Controller {
 
         final LinkedList<Advert> list = new LinkedList<>();
         countMap.entrySet().stream().sorted(Map.Entry.<Advert, Long>comparingByValue().reversed()).forEachOrdered(e -> list.add(e.getKey()));
-        return list.getFirst();
+
+        final Advert first = list.getFirst();
+        repository.delete(first.getId());
+        first.incrementCount();
+        repository.save(first);
+        return first;
     }
 }

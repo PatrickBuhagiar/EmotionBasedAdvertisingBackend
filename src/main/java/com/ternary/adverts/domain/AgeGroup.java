@@ -4,7 +4,7 @@ public enum AgeGroup {
     ALL,
     CHILDREN,
     TEEN,
-    ADOLESCENT,
+    YOUNGADULT,
     ADULT,
     OLD;
 }

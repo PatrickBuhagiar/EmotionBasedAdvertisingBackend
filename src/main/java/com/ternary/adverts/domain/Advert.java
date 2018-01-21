@@ -2,8 +2,6 @@ package com.ternary.adverts.domain;
 
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
 
@@ -11,25 +9,35 @@ import java.io.Serializable;
 public class Advert implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    private int counter;
     private String name;
     private AgeGroup ageGroup;
     private Emotion emotion;
     private Gender gender;
     private String imgURL;
 
-    private Advert() {}
+    private Advert() {
+    }
 
-    public Advert(final String name,
+    public Advert(final Long id,
+                  final String name,
                   final AgeGroup ageGroup,
                   final Emotion emotion,
-                  final Gender gender, final String imgURL) {
+                  final Gender gender,
+                  final String imgURL,
+                  final Integer count) {
+        this.id = id;
         this.name = name;
         this.ageGroup = ageGroup;
         this.emotion = emotion;
         this.gender = gender;
         this.imgURL = imgURL;
+        this.counter = count;
+    }
+
+    public int getCounter() {
+        return counter;
     }
 
     public long getId() {
@@ -78,5 +86,9 @@ public class Advert implements Serializable {
 
     public Gender getGender() {
         return gender;
+    }
+
+    public void incrementCount() {
+        this.counter += 1;
     }
 }
